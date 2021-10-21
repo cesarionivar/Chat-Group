@@ -21,7 +21,7 @@ const ChatGroup = () => {
           <form>
             <input type='text' placeholder='Type a message here' />
             <button type='submit'>
-              <i class='fas fa-paper-plane'></i>
+              <i className='fas fa-paper-plane'></i>
             </button>
           </form>
         </div>

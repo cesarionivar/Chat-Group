@@ -1,8 +1,14 @@
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
 import './sidebar.css';
 import SidebarOption from './SidebarOption';
+import { startGoogleLogout } from '../../actions/auth';
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  console.log(user);
+
   const HandleCreateNewChannel = () => {
     Swal.fire({
       icon: 'question',
@@ -24,6 +30,10 @@ const Sidebar = () => {
         );
       }
     });
+  };
+
+  const handleLogout = () => {
+    dispatch(startGoogleLogout());
   };
 
   return (
@@ -49,11 +59,11 @@ const Sidebar = () => {
       <div className='sidebar__footer'>
         <img
           className='sidebar__footerAvatar'
-          src='https://avatars.dicebear.com/api/adventurer/x.svg'
+          src={user?.photoURL}
           alt='avatar'
         />
-        <p className='sidebar__footerUsername'>Cesario Nivar</p>
-        <button title='Logout'>
+        <p className='sidebar__footerUsername'>{user?.displayName}</p>
+        <button onClick={handleLogout} title='Logout'>
           <i className='fas fa-sign-out-alt'></i>
         </button>
       </div>
