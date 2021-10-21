@@ -18,7 +18,7 @@ const LoginScreen = () => {
         <button onClick={handleLogin}>
           <img
             src='https://storage.googleapis.com/support-kms-prod/ZAl1gIwyUsvfwxoW9ns47iJFioHXODBbIkrK'
-            alt='Google Image'
+            alt='Google'
           />
           Sign in with Google
         </button>

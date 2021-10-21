@@ -1,17 +1,21 @@
 .sidebar {
   flex: 0.2;
   min-width: 250px;
-  background-color: #252329;
+  background-color: #120F13;
   position: relative;
 }
 
 .sidebar__header {
   height: 60px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid rgb(94, 93, 93);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+}
+
+.sidebar__header h2 {
+  font-size: 1.2rem;
 }
 
 .sidebar__header button {
@@ -88,7 +92,7 @@
 .sidebar__footer {
   position: absolute;
   width: 100%;
-  bottom: 2px;
+  bottom: 0px;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -100,6 +104,7 @@
 .sidebar__footerAvatar {
   height: 70%;
   object-fit: contain;
+  border-radius: 100%;
 }
 
 .sidebar__footerUsername {

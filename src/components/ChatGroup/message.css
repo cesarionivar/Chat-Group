@@ -1,0 +1,32 @@
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 20px;
+  width: 90%;
+}
+
+.message__dataUser {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.message__dataUser > p {
+  font-weight: bold;
+  color: #828282;
+}
+
+.message__dataUser > span {
+  font-size: 0.7rem;
+  color: #828282;
+}
+
+.message__userPhoto img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+
+
