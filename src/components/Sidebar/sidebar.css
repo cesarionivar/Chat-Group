@@ -1,0 +1,114 @@
+.sidebar {
+  flex: 0.2;
+  min-width: 250px;
+  background-color: #252329;
+  position: relative;
+}
+
+.sidebar__header {
+  height: 60px;
+  border-bottom: 1px solid lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.sidebar__header button {
+  border: none;
+  background-color: #333333;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.sidebar__header button:hover {
+  background-color: #464545;
+}
+
+.sidebar__search {
+  padding: 20px;
+}
+
+.sidebar__search form {
+  background-color: #3c393f;
+  padding: 0px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__search form input {
+  padding: 5px;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  caret-color: #ffffff;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.sidebar__options {
+  height: 600px;
+  overflow: auto;
+  padding-bottom: 70px;
+}
+
+.sidebar__options::-webkit-scrollbar {
+  width: 0.1rem;
+}
+
+.sidebar__options::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar__options::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+}
+
+.sidebarOption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.sidebarOption__icon {
+  background-color: #3c393f;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.sidebar__footer {
+  position: absolute;
+  width: 100%;
+  bottom: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #0b090c;
+  height: 75px;
+  padding: 10px;
+}
+
+.sidebar__footerAvatar {
+  height: 70%;
+  object-fit: contain;
+}
+
+.sidebar__footerUsername {
+  flex: 0.9;
+}
+
+.sidebar__footer button {
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+}

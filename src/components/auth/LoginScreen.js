@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { startGoogleLogin } from '../../../actions/auth';
+import { startGoogleLogin } from '../../actions/auth';
 
 import './login.css';
 

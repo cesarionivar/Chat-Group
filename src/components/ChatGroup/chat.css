@@ -1,0 +1,10 @@
+.chatGroup {
+  display: flex;
+  height: 100vh;
+}
+
+
+.mainChat {
+  flex: 1;
+  background-color: #3C393F;
+}
