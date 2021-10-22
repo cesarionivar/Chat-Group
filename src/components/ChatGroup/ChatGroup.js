@@ -1,25 +1,21 @@
 import { useEffect } from 'react';
-import { collection, getDocs } from '@firebase/firestore';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { db } from '../../firebase/config';
 import Sidebar from '../Sidebar/Sidebar';
 
 import './chat.css';
 import Message from './Message';
+import { startGettingMessages } from '../../actions/channels';
 
 const ChatGroup = () => {
+  const dispatch = useDispatch();
   const { activeChannel } = useSelector((state) => state.channels);
 
   // TODO: Get the messages in an specific channel
   useEffect(() => {
-    const getMessages = async () => {
-      const querySnapshot = await getDocs(collection(db, 'messages'));
-      querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-      });
-    };
-    getMessages();
-  }, []);
+    if (!activeChannel) return;
+    dispatch(startGettingMessages(activeChannel.id));
+  }, [activeChannel, dispatch]);
 
   return (
     <div className='chatGroup'>

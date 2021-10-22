@@ -3,6 +3,7 @@ import { types } from '../types/types';
 const initialState = {
   channels: [],
   activeChannel: null,
+  messages: [],
 };
 
 export const channelsReducer = (state = initialState, action) => {
@@ -17,6 +18,12 @@ export const channelsReducer = (state = initialState, action) => {
       return {
         ...state,
         activeChannel: action.payload,
+      };
+
+    case types.channelLoadMessages:
+      return {
+        ...state,
+        messages: action.payload,
       };
 
     default:

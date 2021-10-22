@@ -52,6 +52,25 @@ export const startCreatingChannel = () => {
   };
 };
 
+export const startGettingMessages = (channelId) => {
+  return async (dispatch) => {
+    const querySnapshot = await getDocs(collection(db, 'channels'));
+    querySnapshot.docs.forEach(async (doc) => {
+      if (doc.id === channelId) {
+        console.log(doc.id);
+        // TODO: Get messages from the document
+      }
+    });
+
+    // .doc(channelId)
+    // .collection('messages')
+    // .orderBy('time', 'asc')
+    // .onSnapshot((snapshot) =>
+    //   dispatch(loadMessages(snapshot.docs.map((doc) => doc.data())))
+    // );
+  };
+};
+
 export const setActiveChannel = (channel) => ({
   type: types.channelsSetActive,
   payload: channel,
@@ -60,4 +79,9 @@ export const setActiveChannel = (channel) => ({
 const loadChannels = (channels) => ({
   type: types.channelsLoadChannels,
   payload: channels,
+});
+
+const loadMessages = (messages) => ({
+  type: types.channelLoadMessages,
+  payload: messages,
 });

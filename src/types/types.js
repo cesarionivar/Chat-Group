@@ -7,4 +7,6 @@ export const types = {
 
   channelsLoadChannels: '[channels] Load channels',
   channelsSetActive: '[channels] Set active channel',
+
+  channelLoadMessages: '[channel] Load Messages',
 };
