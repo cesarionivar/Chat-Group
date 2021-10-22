@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
 import { types } from '../types/types';
 
-import { addDoc, collection, getDocs } from '@firebase/firestore';
+import { addDoc, collection, doc, getDocs } from '@firebase/firestore';
 import { db } from '../firebase/config';
 
 export const startLoadingChannels = () => {
@@ -54,20 +54,15 @@ export const startCreatingChannel = () => {
 
 export const startGettingMessages = (channelId) => {
   return async (dispatch) => {
-    const querySnapshot = await getDocs(collection(db, 'channels'));
-    querySnapshot.docs.forEach(async (doc) => {
-      if (doc.id === channelId) {
-        console.log(doc.id);
-        // TODO: Get messages from the document
-      }
-    });
+    const docRef = doc(db, 'channels', channelId);
+    const messagesCol = collection(docRef, 'messages');
+    const messageSnapshot = await getDocs(messagesCol);
+    const messagesList = messageSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
 
-    // .doc(channelId)
-    // .collection('messages')
-    // .orderBy('time', 'asc')
-    // .onSnapshot((snapshot) =>
-    //   dispatch(loadMessages(snapshot.docs.map((doc) => doc.data())))
-    // );
+    dispatch(loadMessages(messagesList));
   };
 };
 

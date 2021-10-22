@@ -9,13 +9,12 @@ import { startGettingMessages } from '../../actions/channels';
 
 const ChatGroup = () => {
   const dispatch = useDispatch();
-  const { activeChannel } = useSelector((state) => state.channels);
+  const { activeChannel, messages } = useSelector((state) => state.channels);
 
-  // TODO: Get the messages in an specific channel
   useEffect(() => {
     if (!activeChannel) return;
     dispatch(startGettingMessages(activeChannel.id));
-  }, [activeChannel, dispatch]);
+  }, [activeChannel, dispatch, messages]);
 
   return (
     <div className='chatGroup'>
@@ -28,7 +27,9 @@ const ChatGroup = () => {
           </div>
 
           <div className='mainChat__messages'>
-            <Message />
+            {messages.map((message) => (
+              <Message key={message.id} message={message} />
+            ))}
           </div>
 
           <div className='mainChat__footer'>
