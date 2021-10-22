@@ -22,6 +22,13 @@
   font-size: 1.5rem;
 }
 
+
+.mainChat__title {
+  padding: 20px;
+  text-align: center;
+  margin-top: 30vh;
+}
+
 .mainChat__messages {
   height: 100vh;
   overflow: auto;

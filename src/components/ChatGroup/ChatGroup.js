@@ -69,7 +69,11 @@ const ChatGroup = () => {
           </div>
         </div>
       ) : (
-        <h2 className='mainChat'>Load channel</h2>
+        <div className='mainChat'>
+          <h2 className='mainChat__title'>
+            ✨ Create or select a channel to start a conversation!!!
+          </h2>
+        </div>
       )}
     </div>
   );

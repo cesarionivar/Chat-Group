@@ -12,6 +12,7 @@ import { finishLoading, startLoading } from '../actions/ui';
 
 import ChatGroup from '../components/ChatGroup/ChatGroup';
 import LoginScreen from '../components/auth/LoginScreen';
+import Loader from '../components/Loader/Loader';
 
 const auth = getAuth(app);
 
@@ -31,7 +32,7 @@ const AppRouter = () => {
   }, [dispatch]);
 
   if (loading) {
-    return <h1>Wait...</h1>;
+    return <Loader />;
   }
 
   return (
