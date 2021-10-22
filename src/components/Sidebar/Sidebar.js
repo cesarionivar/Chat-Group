@@ -1,39 +1,29 @@
-import Swal from 'sweetalert2';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import './sidebar.css';
 import SidebarOption from './SidebarOption';
-import { startGoogleLogout } from '../../actions/auth';
+import { startLogout } from '../../actions/auth';
+import {
+  startCreatingChannel,
+  startLoadingChannels,
+} from '../../actions/channels';
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  console.log(user);
+  const { channels } = useSelector((state) => state.channels);
+
+  useEffect(() => {
+    dispatch(startLoadingChannels());
+  }, [dispatch, channels]);
 
   const HandleCreateNewChannel = () => {
-    Swal.fire({
-      icon: 'question',
-      title: 'Name of the new channel?',
-      input: 'text',
-      inputAttributes: {
-        autocapitalize: 'off',
-      },
-      showCancelButton: true,
-      confirmButtonText: 'Create channel',
-      showLoaderOnConfirm: true,
-      allowOutsideClick: () => !Swal.isLoading(),
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Success',
-          `Channel ${result.value} created successfuly!`,
-          'success'
-        );
-      }
-    });
+    dispatch(startCreatingChannel());
   };
 
   const handleLogout = () => {
-    dispatch(startGoogleLogout());
+    dispatch(startLogout());
   };
 
   return (
@@ -53,14 +43,20 @@ const Sidebar = () => {
       </div>
 
       <div className='sidebar__options'>
-        <SidebarOption />
+        {channels.map((channel) => (
+          <SidebarOption
+            key={channel.id}
+            id={channel.id}
+            title={channel.name}
+          />
+        ))}
       </div>
 
       <div className='sidebar__footer'>
         <img
           className='sidebar__footerAvatar'
           src={user?.photoURL}
-          alt='avatar'
+          alt={user?.displayName}
         />
         <p className='sidebar__footerUsername'>{user?.displayName}</p>
         <button onClick={handleLogout} title='Logout'>

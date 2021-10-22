@@ -1,8 +1,18 @@
-const SidebarOption = () => {
+import { useDispatch } from 'react-redux';
+import { setActiveChannel } from '../../actions/channels';
+import { firstCharacter } from '../../helpers/firstCharacter';
+
+const SidebarOption = ({ id, title }) => {
+  const dispatch = useDispatch();
+
+  const handleActiveChannel = () => {
+    dispatch(setActiveChannel(id));
+  };
+
   return (
-    <div className='sidebarOption'>
-      <span className='sidebarOption__icon'>FD</span>
-      <span className='sidebarOption__title'>Front-end Developers</span>
+    <div onClick={handleActiveChannel} className='sidebarOption'>
+      <span className='sidebarOption__icon'>{firstCharacter(title)}</span>
+      <span className='sidebarOption__title'>{title}</span>
     </div>
   );
 };

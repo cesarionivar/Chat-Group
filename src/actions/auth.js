@@ -24,7 +24,7 @@ export const startGoogleLogin = () => {
   };
 };
 
-export const startGoogleLogout = () => {
+export const startLogout = () => {
   return (dispatch) => {
     signOut(auth)
       .then(() => {
