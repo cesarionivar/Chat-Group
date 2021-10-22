@@ -18,7 +18,7 @@ export const startLoadingChannels = () => {
 };
 
 export const startCreatingChannel = () => {
-  return () => {
+  return (dispatch) => {
     Swal.fire({
       icon: 'question',
       title: 'Name of the new channel?',

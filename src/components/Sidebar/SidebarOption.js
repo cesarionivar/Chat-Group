@@ -6,7 +6,7 @@ const SidebarOption = ({ id, title }) => {
   const dispatch = useDispatch();
 
   const handleActiveChannel = () => {
-    dispatch(setActiveChannel(id));
+    dispatch(setActiveChannel({ id, title }));
   };
 
   return (
