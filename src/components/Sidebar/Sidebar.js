@@ -16,7 +16,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     dispatch(startLoadingChannels());
-  }, [dispatch, channels]);
+  }, [dispatch]);
 
   const HandleCreateNewChannel = () => {
     dispatch(startCreatingChannel());

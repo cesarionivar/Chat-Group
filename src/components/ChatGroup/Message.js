@@ -2,7 +2,7 @@ import moment from 'moment';
 import './message.css';
 
 const Message = ({ message: { time, message, user_photo, user_name } }) => {
-  const timeStamp = moment(time.toDate()).calendar();
+  const timeStamp = moment(time?.toDate()).calendar();
 
   return (
     <div className='message'>
